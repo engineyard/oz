@@ -505,6 +505,12 @@ class Guest(object):
         driver.setProp("name", "qemu")
         driver.setProp("type", self.image_type)
 
+        # Fix a udev / grub problem
+        # See https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/604335
+        #     https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/565146
+        #     http://lists.opensuse.org/opensuse-bugs/2012-04/msg00301.html
+        serial = bootDisk.newChild(None, "serial", "OMG001")
+
         # install disk (if any)
         if installdev:
             install = devices.newChild(None, "disk", None)
