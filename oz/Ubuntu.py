@@ -77,7 +77,7 @@ Subsystem       sftp    /usr/libexec/openssh/sftp-server
         self.initrdcache = os.path.join(self.data_dir, "kernels",
                                         self.tdl.distro + self.tdl.update + self.tdl.arch + "-ramdisk")
 
-        self.cmdline = "priority=critical locale=en_US"
+        self.cmdline = "console=tty0 console=ttyS0,115200 priority=critical locale=en_US"
 
         self.reboots = 0
         if self.tdl.update in ["5.04", "5.10"]:

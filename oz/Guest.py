@@ -490,6 +490,11 @@ class Guest(object):
         serial.setProp("type", "pty")
         serialTarget = serial.newChild(None, "target", None)
         serialTarget.setProp("port", "0")
+        console = devices.newChild(None, "console", None)
+        console.setProp("type", "pty")
+        consoleTarget = console.newChild(None, "target", None)
+        consoleTarget.setProp("type", "serial")
+        consoleTarget.setProp("port", "0")
         # serial
         self._generate_serial_xml(devices)
         # boot disk
